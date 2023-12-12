@@ -10,12 +10,14 @@ class MyFragment : Fragment() {
 
     private var name: String? = null
     private var number = 0
+    private var initView : View ?= null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_my, container, false)
+        initView =  inflater.inflate(R.layout.fragment_my, container, false)
+        return initView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,9 +41,9 @@ class MyFragment : Fragment() {
     }
 
     private fun updateDisplay() {
-        val nameTextView = null
+        val nameTextView = initView?.findViewById(R.id.nameTextView)
         nameTextView.text = "Name: $name"
-        val numberTextView = null
+        val numberTextView = initView?.findViewById(R.id.numberTextView)
         numberTextView.text = "Number: $number"
     }
 }
